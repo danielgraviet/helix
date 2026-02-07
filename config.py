@@ -1,0 +1,20 @@
+import os
+
+# LLM
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+MODEL = "claude-sonnet-4-5-20250929"
+MAX_TOKENS = 4096
+
+# Docker
+DOCKER_NETWORK = "agent-net"
+SKILL_BASE_IMAGE = "python:3.12-slim"
+CONTAINER_TIMEOUT = 60  # seconds — kill builds/runs that exceed this
+SKILL_STARTUP_TIMEOUT = 15  # seconds — max wait for /health to respond
+
+# Port allocation
+PORT_RANGE_START = 9001
+PORT_RANGE_END = 9100
+
+# Skill Factory
+MAX_BUILD_RETRIES = 3  # feed errors back to Claude and retry
