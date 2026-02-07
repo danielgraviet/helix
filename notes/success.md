@@ -4,4 +4,9 @@
 3. "Generate the first 20 numbers in the Fibonacci sequence" — the skill needs a loop, not just a one-liner
 4. "Pull the top 5 stories from hacker news"
 5. "Create a QR code for this website"
-6. 
+6. "Take this json and turn into CSV @eng.json"
+7. "Create web app for generating unique passwords with options"
+8. 
+
+# Failure
+1. "can you create a web app to help me visualize this JSON data? @ecom_big.json" -- more complex CSV. 

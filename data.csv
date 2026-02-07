@@ -1,0 +1,31 @@
+Staff_ID,Name,Role,Department,Join_Date,Salary_Band,On_Call,Remote
+ENG-001,Alex Rivet,Lead Backend,Infrastructure,2021-03-12,Senior,TRUE,TRUE
+ENG-002,Jordan Wei,DevOps Engineer,Infrastructure,2022-05-19,Mid,FALSE,TRUE
+ENG-003,Sam Taylor,Frontend Dev,Storefront,2023-01-10,Junior,FALSE,FALSE
+ENG-004,Elena Vance,Data Scientist,Analytics,2020-11-02,Senior,FALSE,TRUE
+ENG-005,Marcus Thorne,Security Engineer,Security,2021-08-15,Senior,TRUE,FALSE
+ENG-006,Sarah Chen,Fullstack Dev,Storefront,2022-02-28,Mid,FALSE,TRUE
+ENG-007,Riley Cooper,Site Reliability,Infrastructure,2021-12-05,Senior,TRUE,TRUE
+ENG-008,Jamie Lanz,Mobile Dev,Consumer App,2023-04-12,Junior,FALSE,FALSE
+ENG-009,Casey Wright,Lead Frontend,Storefront,2019-09-20,Senior,FALSE,TRUE
+ENG-010,Morgan Fall,Backend Dev,Payments,2022-07-01,Mid,TRUE,TRUE
+ENG-011,Taylor Reed,QA Engineer,Testing,2023-02-14,Junior,FALSE,FALSE
+ENG-012,Skyler Moss,Data Architect,Analytics,2020-05-30,Senior,FALSE,TRUE
+ENG-013,Dakota Bly,DevOps Engineer,Infrastructure,2022-10-11,Mid,TRUE,TRUE
+ENG-014,Avery Stone,Backend Dev,Payments,2021-06-22,Mid,FALSE,FALSE
+ENG-015,Parker Jace,Product Engineer,Growth,2023-05-05,Junior,FALSE,TRUE
+ENG-016,Quinn Rivers,Lead Security,Security,2018-03-14,Staff,TRUE,TRUE
+ENG-017,Robin Banks,Data Engineer,Analytics,2022-01-18,Mid,FALSE,TRUE
+ENG-018,Cassidy Noon,Frontend Dev,Growth,2023-08-20,Junior,FALSE,FALSE
+ENG-019,Logan Grey,Fullstack Dev,Storefront,2021-11-30,Mid,FALSE,TRUE
+ENG-020,Devin Cross,Backend Dev,Infrastructure,2020-04-15,Senior,TRUE,TRUE
+ENG-021,Sasha Vane,UX Engineer,Storefront,2022-09-09,Mid,FALSE,FALSE
+ENG-022,Micah Finn,Site Reliability,Infrastructure,2021-02-10,Senior,TRUE,TRUE
+ENG-023,Hayden Brooks,Machine Learning,Analytics,2022-12-01,Mid,FALSE,TRUE
+ENG-024,Reese Miller,Mobile Dev,Consumer App,2023-06-15,Junior,FALSE,FALSE
+ENG-025,Peyton Blair,Systems Architect,Infrastructure,2019-01-25,Staff,TRUE,TRUE
+ENG-026,Emerson Lake,QA Lead,Testing,2020-08-18,Senior,FALSE,FALSE
+ENG-027,Charlie West,Backend Dev,Payments,2022-03-05,Mid,TRUE,TRUE
+ENG-028,Drew Sterling,Frontend Dev,Storefront,2023-07-10,Junior,FALSE,TRUE
+ENG-029,Sidney Volt,Cloud Engineer,Infrastructure,2021-10-22,Senior,TRUE,TRUE
+ENG-030,Tatum Ridge,Fullstack Dev,Growth,2022-11-15,Mid,FALSE,FALSE
