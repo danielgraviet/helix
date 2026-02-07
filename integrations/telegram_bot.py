@@ -1,5 +1,5 @@
 """
-SEAF Telegram Bot — run as: python -m integrations.telegram_bot
+Helix Telegram Bot — run as: python -m integrations.telegram_bot
 """
 from dotenv import load_dotenv
 load_dotenv()
@@ -28,7 +28,7 @@ registry = SkillRegistry()
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
-        "SEAF — Self-Extending Agentic Framework\n\n"
+        "Helix — Skills that evolve on demand.\n\n"
         "Send me a task and I'll create microservice skills to solve it.\n\n"
         "Commands:\n"
         "/skills — list active skills\n"
@@ -120,7 +120,7 @@ def main() -> None:
 
     app.post_shutdown = post_shutdown
 
-    logger.info("SEAF Telegram bot starting (polling mode)...")
+    logger.info("Helix Telegram bot starting (polling mode)...")
     app.run_polling()
 
 

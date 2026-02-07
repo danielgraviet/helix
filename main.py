@@ -27,7 +27,7 @@ def cleanup(registry: SkillRegistry) -> None:
 
 
 def main():
-    console.print("[bold]SEAF — Self-Extending Agentic Framework[/bold]")
+    console.print("[bold]Helix — Skills that evolve on demand.[/bold]")
     console.print("Type a task and the agent will create skills to solve it.")
     console.print("Type 'quit' to exit.\n")
 

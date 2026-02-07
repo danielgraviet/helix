@@ -1,4 +1,4 @@
-# SEAF Roadmap — 48-Hour Hackathon Plan
+# Helix Roadmap — 48-Hour Hackathon Plan
 
 ## Goal
 
@@ -56,7 +56,7 @@ User prompt
 
 - [X] Initialize project structure:
   ```
-  seaf/
+  helix/
   ├── orchestrator/
   │   ├── main.py            # entry point
   │   ├── agent.py           # Claude API loop with tool definitions
@@ -149,7 +149,7 @@ User prompt
 - [ ] **Skill chaining:** Claude calls one skill, feeds its output into another
 - [ ] **Simple web UI:** A Streamlit or Gradio chat interface that shows the conversation + a sidebar listing active skill containers
 - [ ] **Pre-seed a couple skills** so the demo starts fast, then create a new one live
-- [ ] **Interface Handoff to Telegram** Can I have SEAF create a webhook/interaction with telegram so I can communciate with through there?
+- [ ] **Interface Handoff to Telegram** Can I have Helix create a webhook/interaction with telegram so I can communciate with through there?
 
 ---
 
