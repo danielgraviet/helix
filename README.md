@@ -83,7 +83,7 @@ helix/
 
 ```bash
 # Clone and install dependencies
-git clone <your-repo-url>
+git clone https://github.com/danielgraviet/helix.git
 cd helix
 uv sync
 
@@ -104,7 +104,7 @@ cp .env.example .env
 uv run python -m main
 ```
 
-### Run the Telegram Bot
+### OR run the Telegram Bot
 
 ```bash
 # Add TELEGRAM_BOT_TOKEN to your .env file
