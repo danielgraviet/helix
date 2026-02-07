@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -42,6 +45,27 @@ HELIX_BANNER = r"""#############################################################
 #########################################################################"""
 
 
+def expand_file_references(text: str) -> str | None:
+    """Replace @filepath patterns with the file's contents.
+
+    Returns the expanded string, or None if a referenced file is missing.
+    """
+    pattern = r"@([\w./\-]+)"
+    matches = re.findall(pattern, text)
+    if not matches:
+        return text
+
+    for filepath in matches:
+        path = Path(filepath)
+        if not path.exists():
+            console.print(f"[red]File not found: {filepath}[/red]")
+            return None
+        contents = path.read_text()
+        text = text.replace(f"@{filepath}", f"\n\n[Contents of {filepath}]:\n{contents}")
+
+    return text
+
+
 def main():
     console.print(f"[green]{HELIX_BANNER}[/green]", highlight=False)
     console.print("\n\n")
@@ -59,6 +83,10 @@ def main():
                 continue
             if user_input.lower() in ("quit", "exit"):
                 break
+
+            user_input = expand_file_references(user_input)
+            if user_input is None:
+                continue
 
             try:
                 response = run_agent(user_input, registry)

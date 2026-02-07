@@ -3,3 +3,5 @@
 2. "Reverse the string 'hello world' and count the vowels" — tests a skill that does string manipulation
 3. "Generate the first 20 numbers in the Fibonacci sequence" — the skill needs a loop, not just a one-liner
 4. "Pull the top 5 stories from hacker news"
+5. "Create a QR code for this website"
+6. 

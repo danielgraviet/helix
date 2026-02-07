@@ -1,0 +1,20 @@
+[
+  {
+    "id": 101,
+    "item": "Helix Tech Hoodie",
+    "price": 55.00,
+    "in_stock": true
+  },
+  {
+    "id": 102,
+    "item": "Minimalist Desk Mat",
+    "price": 24.99,
+    "in_stock": false
+  },
+  {
+    "id": 103,
+    "item": "Vector Art Print",
+    "price": 15.00,
+    "in_stock": true
+  }
+]

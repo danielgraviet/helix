@@ -1,0 +1,20 @@
+[
+  {
+    "staff_id": "ENG-001",
+    "name": "Alex Rivet",
+    "role": "Lead Backend",
+    "on_call": true
+  },
+  {
+    "staff_id": "ENG-002",
+    "name": "Jordan Wei",
+    "role": "DevOps Engineer",
+    "on_call": false
+  },
+  {
+    "staff_id": "ENG-003",
+    "name": "Sam Taylor",
+    "role": "Frontend Dev",
+    "on_call": false
+  }
+]
