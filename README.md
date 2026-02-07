@@ -153,6 +153,14 @@ All settings live in `config.py`:
 
 ## Tech Stack
 
+<p align="center">
+  <img src="media/fast_api.webp" alt="FastAPI" height="60">&nbsp;&nbsp;
+  <img src="media/docker.webp" alt="Docker" height="60">&nbsp;&nbsp;
+  <img src="media/jinja.webp" alt="Jinja2" height="60">&nbsp;&nbsp;
+  <img src="media/cerebras.webp" alt="Cerebras" height="60">&nbsp;&nbsp;
+  <img src="media/telegram.webp" alt="Telegram" height="60">
+</p>
+
 - **Agent**: Claude API (Anthropic) with native tool use
 - **Skill Runtime**: FastAPI + uvicorn in Docker containers
 - **Templating**: Jinja2
