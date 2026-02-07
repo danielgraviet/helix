@@ -1,0 +1,41 @@
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse, HTMLResponse
+
+app = FastAPI(title="{{ skill_name }}")
+
+# Module-level storage for viewable content and persistent state
+_viewable_html: str | None = None
+_state: dict = {}
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok", "skill": "{{ skill_name }}"}
+
+
+@app.get("/view")
+async def view_get(request: Request):
+    if _viewable_html is None:
+        return HTMLResponse("<h1>No content yet.</h1><p>Call /execute first to generate content.</p>", status_code=404)
+    return HTMLResponse(_viewable_html)
+
+
+@app.post("/view")
+async def view_post(request: Request):
+    global _viewable_html, _state
+    form = await request.form()
+    form_data = dict(form)
+    try:
+{{ view_post_code }}
+    except Exception as e:
+        return HTMLResponse(f"<h1>Error</h1><pre>{e}</pre>", status_code=500)
+
+
+@app.post("/execute")
+async def execute(request: Request):
+    global _viewable_html, _state
+    body = await request.json() if await request.body() else {}
+    try:
+{{ execute_code }}
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": str(e)})
