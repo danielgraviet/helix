@@ -87,6 +87,19 @@ TOOLS = [
             "required": ["name", "description", "execute_code"],
         },
     },
+    {
+        "name": "start_telegram_bot",
+        "description": (
+            "Start the Telegram bot so users can interact with Helix via Telegram. "
+            "The bot shares the same skill registry as the CLI. "
+            "Only call this when the user explicitly asks to start the Telegram bot."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+        },
+    },
 ]
 
 SYSTEM_PROMPT = """\
@@ -180,16 +193,24 @@ def handle_create_skill(registry: SkillRegistry, name: str, description: str, ex
                 })
 
 
+def handle_start_telegram(registry: SkillRegistry, _telegram_manager=None, **kwargs) -> str:
+    if _telegram_manager is None:
+        return json.dumps({"error": "Telegram manager not available."})
+    result = _telegram_manager.start(registry)
+    return json.dumps({"status": result})
+
+
 TOOL_HANDLERS = {
     "list_available_skills": handle_list_skills,
     "call_skill": handle_call_skill,
     "create_new_skill": handle_create_skill,
+    "start_telegram_bot": handle_start_telegram,
 }
 
 
 # --- Agent loop ---
 
-def run_agent(user_message: str, registry: SkillRegistry) -> str:
+def run_agent(user_message: str, registry: SkillRegistry, **extra_context) -> str:
     """Send a user message through the agent loop. Returns the final text response."""
     client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
 
@@ -229,7 +250,7 @@ def run_agent(user_message: str, registry: SkillRegistry) -> str:
             if handler is None:
                 result = json.dumps({"error": f"Unknown tool: {tool_name}"})
             else:
-                result = handler(registry=registry, **tool_input)
+                result = handler(registry=registry, **extra_context, **tool_input)
 
             console.print(f"[dim]Tool result: {result[:200]}[/dim]")
 

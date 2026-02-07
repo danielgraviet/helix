@@ -9,6 +9,7 @@ from rich.console import Console # noqa: E402
 from orchestrator.agent import run_agent # noqa: E402
 from orchestrator.registry import SkillRegistry # noqa: E402
 from skill_factory.factory import remove_skill  # noqa: E402
+from integrations.telegram_manager import TelegramManager  # noqa: E402
 
 console = Console()
 
@@ -74,6 +75,7 @@ def main():
     console.print("Type 'quit' to exit.\n")
 
     registry = SkillRegistry()
+    telegram_manager = TelegramManager()
 
     try:
         while True:
@@ -89,13 +91,14 @@ def main():
                 continue
 
             try:
-                response = run_agent(user_input, registry)
+                response = run_agent(user_input, registry, _telegram_manager=telegram_manager)
                 console.print(f"\n[bold]{response}[/bold]\n")
             except Exception as e:
                 console.print(f"\n[red]Error: {e}[/red]\n")
     except KeyboardInterrupt:
         console.print("\n")
     finally:
+        telegram_manager.stop()
         cleanup(registry)
         console.print("[dim]Goodbye.[/dim]")
 
