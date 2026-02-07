@@ -1,0 +1,14 @@
+[
+  {"month": "Jan", "revenue": 12400, "expenses": 9800, "users": 340},
+  {"month": "Feb", "revenue": 15800, "expenses": 10200, "users": 455},
+  {"month": "Mar", "revenue": 14200, "expenses": 11500, "users": 410},
+  {"month": "Apr", "revenue": 18900, "expenses": 12100, "users": 580},
+  {"month": "May", "revenue": 22300, "expenses": 13400, "users": 720},
+  {"month": "Jun", "revenue": 26100, "expenses": 14800, "users": 890},
+  {"month": "Jul", "revenue": 24500, "expenses": 15200, "users": 845},
+  {"month": "Aug", "revenue": 29800, "expenses": 16100, "users": 1020},
+  {"month": "Sep", "revenue": 31200, "expenses": 17500, "users": 1150},
+  {"month": "Oct", "revenue": 28700, "expenses": 16800, "users": 1080},
+  {"month": "Nov", "revenue": 34500, "expenses": 18200, "users": 1290},
+  {"month": "Dec", "revenue": 38100, "expenses": 19500, "users": 1450}
+]
