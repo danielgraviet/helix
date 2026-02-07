@@ -26,7 +26,25 @@ def cleanup(registry: SkillRegistry) -> None:
                 pass
 
 
+HELIX_BANNER = r"""#########################################################################
+#                                            __                         #
+#   _   _  _____ _      _____  __           /  \      Helix             #
+#  | | | || ____| |    |_ _\ \/ /          / /\ \     v1.0.0            #
+#  | |_| ||  _| | |     | | \  /          | |  | |    --------------    #
+#  |  _  || |___| |___  | | /  \           \ \/ /     [STATUS: ACTIVE]  #
+#  |_| |_||_____|_____||___/_/\_\           \  /                        #
+#                                           /  \                        #
+#   Skills that evolve on demand.          / /\ \                       #
+#                                         | |  | |                      #
+#                                          \ \/ /                       #
+#                                           \  /                        #
+#                                            \/                         #
+#########################################################################"""
+
+
 def main():
+    console.print(f"[green]{HELIX_BANNER}[/green]", highlight=False)
+    console.print("\n\n")
     console.print("[bold]Helix — Skills that evolve on demand.[/bold]")
     console.print("Type a task and the agent will create skills to solve it.")
     console.print("Type 'quit' to exit.\n")

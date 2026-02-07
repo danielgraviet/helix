@@ -41,7 +41,7 @@ def build_and_run(spec: SkillSpec) -> Skill:
     """Take a SkillSpec, build a Docker image, run the container, return a Skill."""
     client = docker.from_env()
     port = allocate_port()
-    image_tag = f"seaf-skill-{spec.name}:latest"
+    image_tag = f"helix-skill-{spec.name}:latest"
 
     # Render templates to source files
     files = render_skill(spec)
@@ -73,7 +73,7 @@ def build_and_run(spec: SkillSpec) -> Skill:
         detach=True,
         ports={"8000/tcp": port},
         network=config.DOCKER_NETWORK,
-        name=f"seaf-{spec.name}",
+        name=f"helix-{spec.name}",
     )
 
     # Build the Skill object

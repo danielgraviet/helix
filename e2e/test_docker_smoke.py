@@ -27,7 +27,7 @@ def docker_client():
 def smoke_container(docker_client):
     """Build and run a minimal FastAPI container, then clean up after the test."""
     container = None
-    image_tag = "seaf-smoke-test:latest"
+    image_tag = "helix-smoke-test:latest"
 
     with tempfile.TemporaryDirectory() as build_dir:
         # Write a minimal FastAPI app
@@ -68,7 +68,7 @@ def smoke_container(docker_client):
             detach=True,
             ports={"8000/tcp": _SMOKE_TEST_PORT}, # how does this port come into play? is it localhost:8000/tcp?
             network=config.DOCKER_NETWORK,
-            name="seaf-smoke-test",
+            name="helix-smoke-test",
         )
 
     yield container
