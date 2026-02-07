@@ -24,6 +24,27 @@ Helix is a self-extending AI agent. Give it a task, and it will check if it alre
 ## How It Works
 ![Helix Architecture](media/helix_diagram.png)
 
+## Provider Comparison
+
+Helix supports multiple LLM providers. We ran the same three prompts through **Claude** and **GPT OSS** to compare the skills each model generated.
+
+### QR Code Generator
+| Claude | GPT OSS |
+|:---:|:---:|
+| ![Claude QR](media/claude_qr.png) | ![GPT OSS QR](media/gpt_oss_qr.png) |
+
+### Password Generator
+| Claude | GPT OSS |
+|:---:|:---:|
+| ![Claude Password](media/claude_password.png) | ![GPT OSS Password](media/gpt_oss_pass.png) |
+
+### Data Visualization
+| Claude | GPT OSS |
+|:---:|:---:|
+| ![Claude Data](media/claude_data.png) | ![GPT OSS Data](media/gpt_oss_data.png) |
+
+---
+
 ## Project Structure
 
 ```
