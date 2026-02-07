@@ -22,36 +22,7 @@ Helix is a self-extending AI agent. Give it a task, and it will check if it alre
 ---
 
 ## How It Works
-
-```
-User prompt
-    |
-    v
-+----------------+
-|  Orchestrator  |  Claude API with tool use
-|  Agent Loop    |  Decides: reuse or create?
-+-------+--------+
-        |
-        +---> list_available_skills() --> Skill exists? --> call_skill()
-        |
-        +---> No skill? --> create_new_skill()
-                                |
-                                v
-                        +---------------+
-                        | Skill Factory |  Generates code + Dockerfile
-                        | docker-py SDK |  Builds image, runs container
-                        +-------+-------+
-                                |
-                                v
-                        +---------------+
-                        | Skill (Docker)|  FastAPI on dynamic port
-                        | /execute      |  POST - does the work
-                        | /health       |  GET  - liveness check
-                        | /view         |  GET  - viewable content
-                        +---------------+
-```
-
----
+![Helix Architecture](media/helix_diagram.png)
 
 ## Project Structure
 
