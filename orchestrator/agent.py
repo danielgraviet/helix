@@ -1,11 +1,11 @@
 import json
 
-import anthropic
 import httpx
 from rich.console import Console
 
 import config
 from models.skill import SkillSpec
+from orchestrator.providers import get_provider
 from orchestrator.registry import SkillRegistry
 from skill_factory.factory import build_and_run
 
@@ -147,7 +147,7 @@ def handle_list_skills(registry: SkillRegistry, **kwargs) -> str:
     return json.dumps(skills, indent=2)
 
 
-def handle_call_skill(registry: SkillRegistry, skill_name: str, payload: dict) -> str:
+def handle_call_skill(registry: SkillRegistry, skill_name: str, payload: dict, **kwargs) -> str:
     skill = registry.lookup(skill_name)
     if skill is None:
         return json.dumps({"error": f"Skill '{skill_name}' not found in registry."})
@@ -159,7 +159,7 @@ def handle_call_skill(registry: SkillRegistry, skill_name: str, payload: dict) -
         return json.dumps({"error": f"Failed to call skill: {str(e)}"})
 
 
-def handle_create_skill(registry: SkillRegistry, name: str, description: str, execute_code: str, view_post_code: str | None = None, dependencies: list[str] | None = None) -> str:
+def handle_create_skill(registry: SkillRegistry, name: str, description: str, execute_code: str, view_post_code: str | None = None, dependencies: list[str] | None = None, **kwargs) -> str:
     # Check if skill already exists
     if registry.lookup(name):
         return json.dumps({"error": f"Skill '{name}' already exists."})
@@ -212,52 +212,31 @@ TOOL_HANDLERS = {
 
 def run_agent(user_message: str, registry: SkillRegistry, **extra_context) -> str:
     """Send a user message through the agent loop. Returns the final text response."""
-    client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
-
+    provider = get_provider()
+    tools = provider.convert_tools(TOOLS)
     messages = [{"role": "user", "content": user_message}]
 
     while True:
         console.print("[dim]Thinking...[/dim]")
 
-        response = client.messages.create(
-            model=config.MODEL,
-            max_tokens=config.MAX_TOKENS,
-            system=SYSTEM_PROMPT,
-            tools=TOOLS,
-            messages=messages,
-        )
+        response = provider.create_message(SYSTEM_PROMPT, messages, tools)
+        messages.append(response.raw_message)
 
-        # Collect text and tool use blocks from the response
-        assistant_content = response.content
-        messages.append({"role": "assistant", "content": assistant_content})
-
-        # If Claude is done (no more tool calls), return the text
-        if response.stop_reason == "end_turn":
-            text_parts = [block.text for block in assistant_content if block.type == "text"]
-            return "\n".join(text_parts)
+        if response.is_done:
+            return "\n".join(response.text_parts)
 
         # Process tool calls
         tool_results = []
-        for block in assistant_content:
-            if block.type != "tool_use":
-                continue
+        for tc in response.tool_calls:
+            console.print(f"[cyan]Calling tool: {tc.name}[/cyan]")
 
-            tool_name = block.name
-            tool_input = block.input
-            console.print(f"[cyan]Calling tool: {tool_name}[/cyan]")
-
-            handler = TOOL_HANDLERS.get(tool_name)
+            handler = TOOL_HANDLERS.get(tc.name)
             if handler is None:
-                result = json.dumps({"error": f"Unknown tool: {tool_name}"})
+                result = json.dumps({"error": f"Unknown tool: {tc.name}"})
             else:
-                result = handler(registry=registry, **extra_context, **tool_input)
+                result = handler(registry=registry, **extra_context, **tc.input)
 
             console.print(f"[dim]Tool result: {result[:200]}[/dim]")
+            tool_results.append({"id": tc.id, "content": result})
 
-            tool_results.append({
-                "type": "tool_result",
-                "tool_use_id": block.id,
-                "content": result,
-            })
-
-        messages.append({"role": "user", "content": tool_results})
+        messages.extend(provider.format_tool_results(tool_results))

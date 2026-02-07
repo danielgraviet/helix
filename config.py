@@ -1,9 +1,19 @@
 import os
 
-# LLM
+# LLM — provider selection ("anthropic" or "cerebras")
+LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "anthropic")
+
+# Anthropic
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+ANTHROPIC_MODEL = "claude-sonnet-4-5-20250929"
+
+# Cerebras (OpenAI-compatible)
+CEREBRAS_API_KEY = os.environ.get("CEREBRAS_API_KEY", "")
+CEREBRAS_MODEL = os.environ.get("CEREBRAS_MODEL", "zai-glm-4.7")
+CEREBRAS_BASE_URL = "https://api.cerebras.ai/v1"
+
+# Shared
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-MODEL = "claude-sonnet-4-5-20250929"
 MAX_TOKENS = 4096
 
 # Docker
