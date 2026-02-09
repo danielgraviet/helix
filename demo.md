@@ -1,21 +1,18 @@
-## Demo Script
-
 ### Act 1: Skill Creation (CLI)
-1. `Generate a QR code for https://github.com/danielgraviet/helix`
-2. `Now make me a QR code for https://www.blockchain.com/explorer/assets/btc`
-3. `Build a web app password generator with options`
-4. `Create a chart showing revenue vs expenses over time @data.json`
+1. Generate a QR code for https://github.com/danielgraviet/helix
+2. Now make me a QR code for https://www.blockchain.com/explorer/assets/btc
+3. Create a chart showing revenue vs expenses over time @data.json
 
 ### Act 2: Self-Extension (CLI → Telegram)
-5. `Start the Telegram bot`
+4. Start the Telegram bot
 
 ### Act 3: Shared Intelligence (Telegram)
-6. `/skills`
-7. `Create a chart showing revenue vs expenses over time for this data. [ {"month": "Jan", "revenue": 12400, "expenses": 9800, "users": 340}, {"month": "Mar", "revenue": 14200, "expenses": 11500, "users": 410}]`
-8. `Build me a coin flip endpoint`
+5. /skills
+6. Create a chart showing revenue vs expenses over time for this data. [ {"month": "Jan", "revenue": 12400, "expenses": 9800, "users": 340}, {"month": "Mar", "revenue": 14200, "expenses": 11500, "users": 410}]
+7. Build me a coin flip endpoint
 
 ### Act 4: Full Circle (CLI)
-9. `Flip a coin`
+8. Flip a coin
 
 ---
 

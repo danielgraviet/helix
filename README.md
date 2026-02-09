@@ -21,6 +21,9 @@ Helix is a self-extending AI agent. Give it a task, and it will check if it alre
 
 ---
 
+## Live Demo
+[![Video Title](media/image.png)](https://www.youtube.com/watch?v=zLLV13ALJA8)
+
 ## How It Works
 ![Helix Architecture](media/helix_diagram.png)
 
